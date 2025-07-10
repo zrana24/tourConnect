@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TourConnect | İlanlar</title>
+    <!-- Font Awesome 6.4 (jsdelivr) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/listings.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <i class="fas fa-map-marked-alt me-2"></i>TourConnect
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Ana Sayfa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="listings.html"><i class="fas fa-list me-1"></i> İlanlar</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <a href="login.html" class="btn btn-light btn-sm me-2"><i class="fas fa-sign-in-alt me-1"></i> Giriş Yap</a>
+        <a href="register.html" class="btn btn-outline-light btn-sm"><i class="fas fa-user-plus me-1"></i> Kayıt Ol</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-5 pt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>İlanlar</h1>
+        <div class="d-flex gap-2">
+            <select class="form-select" id="sort-select" style="width: auto;">
+                <option value="newest">En Yeniler</option>
+                <option value="oldest">En Eskiler</option>
+                <option value="rating">En Yüksek Puan</option>
+            </select>
+            <button class="btn btn-primary" id="apply-filters-btn">Filtrele</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Filtreler</h5>
+                </div>
+                <div class="card-body">
+                    <form id="filters-form">
+                        <div class="mb-3">
+                            <label class="form-label">Lokasyon</label>
+                            <select class="form-select" name="location">
+                                <option value="">Tümü</option>
+                                <option value="istanbul">İstanbul</option>
+                                <option value="ankara">Ankara</option>
+                                <option value="izmir">İzmir</option>
+                                <option value="kapadokya">Kapadokya</option>
+                                <option value="antalya">Antalya</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tip</label>
+                            <select class="form-select" name="type" id="type-filter">
+                                <option value="all">Tümü</option>
+                                <option value="rehber">Rehberler</option>
+                                <option value="acenta">Acentalar</option>
+                            </select>
+                        </div>
+                        <!-- Diğer filtreler eklenebilir -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row" id="listings-container">
+                <!-- 6 İlan (3 rehber, 3 acenta) -->
+                <!-- Rehber İlanı 1 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card guide-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative">
+                      <img src="https://via.placeholder.com/300x300?text=Rehber+1" class="card-img-top" alt="Rehber Ahmet Yılmaz">
+                      <div class="badge-overlay position-absolute top-0 end-0 m-2">
+                        <span class="badge bg-success">Çevrimiçi</span>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title mb-1">Ahmet Yılmaz</h5>
+                      <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>İstanbul</p>
+                      <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-light text-dark"><i class="fas fa-landmark me-1"></i>Tarih</span>
+                        <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>İngilizce</span>
+                      </div>
+                      <p class="card-text">15 yıllık deneyime sahip profesyonel tur rehberi. Bizans ve Osmanlı tarihi uzmanı.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Rehber İlanı 2 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card guide-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative">
+                      <img src="https://via.placeholder.com/300x300?text=Rehber+2" class="card-img-top" alt="Rehber Ayşe Demir">
+                      <div class="badge-overlay position-absolute top-0 end-0 m-2">
+                        <span class="badge bg-secondary">Çevrimdışı</span>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title mb-1">Ayşe Demir</h5>
+                      <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Kapadokya</p>
+                      <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-light text-dark"><i class="fas fa-mountain me-1"></i>Doğa</span>
+                        <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>Fransızca</span>
+                      </div>
+                      <p class="card-text">Kapadokya'nın vadileri ve peri bacaları hakkında uzman yerel rehber.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Rehber İlanı 3 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card guide-card h-100 border-0 shadow-sm">
+                    <div class="card-img-top position-relative">
+                      <img src="https://via.placeholder.com/300x300?text=Rehber+3" class="card-img-top" alt="Rehber Mehmet Kaya">
+                      <div class="badge-overlay position-absolute top-0 end-0 m-2">
+                        <span class="badge bg-success">Çevrimiçi</span>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title mb-1">Mehmet Kaya</h5>
+                      <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Antalya</p>
+                      <div class="d-flex flex-wrap gap-2 mb-3">
+                        <span class="badge bg-light text-dark"><i class="fas fa-umbrella-beach me-1"></i>Plaj</span>
+                        <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>Almanca</span>
+                      </div>
+                      <p class="card-text">Antalya ve çevresinde 10+ yıl deneyimli, plaj ve doğa turları uzmanı rehber.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Acenta İlanı 1 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card agency-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="agency-logo mb-4 mx-auto">
+                        <img src="https://via.placeholder.com/120x120?text=Acenta+1" alt="Turkey Tour Experts" class="img-fluid">
+                      </div>
+                      <h5 class="card-title">Turkey Tour Experts</h5>
+                      <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>İstanbul, Ankara, İzmir</p>
+                      <div class="rating mb-3">
+                        <span class="text-warning"><i class="fas fa-star"></i></span>
+                        <span class="ms-1">4.7 (342)</span>
+                      </div>
+                      <p class="card-text">Türkiye'nin her bölgesine özel turlar düzenleyen, 15 yıllık deneyime sahip acenta.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Acenta İlanı 2 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card agency-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="agency-logo mb-4 mx-auto">
+                        <img src="https://via.placeholder.com/120x120?text=Acenta+2" alt="Cappadocia Dream Tours" class="img-fluid">
+                      </div>
+                      <h5 class="card-title">Cappadocia Dream Tours</h5>
+                      <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>Nevşehir, Kayseri</p>
+                      <div class="rating mb-3">
+                        <span class="text-warning"><i class="fas fa-star"></i></span>
+                        <span class="ms-1">4.9 (210)</span>
+                      </div>
+                      <p class="card-text">Kapadokya ve çevresinde balon turları ve doğa gezileriyle ünlü acenta.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Acenta İlanı 3 -->
+                <div class="col-md-4 mb-4">
+                  <div class="card agency-card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                      <div class="agency-logo mb-4 mx-auto">
+                        <img src="https://via.placeholder.com/120x120?text=Acenta+3" alt="Ege Tatil Turları" class="img-fluid">
+                      </div>
+                      <h5 class="card-title">Ege Tatil Turları</h5>
+                      <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>İzmir, Bodrum, Kuşadası</p>
+                      <div class="rating mb-3">
+                        <span class="text-warning"><i class="fas fa-star"></i></span>
+                        <span class="ms-1">4.8 (185)</span>
+                      </div>
+                      <p class="card-text">Ege bölgesinde yaz tatili ve kültür turları sunan deneyimli acenta.</p>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                      <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white pt-5 pb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <h5 class="text-uppercase fw-bold mb-4">
+          <i class="fas fa-map-marked-alt me-2"></i>TourConnect
+        </h5>
+        <p>Rehberler ve seyahat acentalarını buluşturan profesyonel platform. Turizm sektöründe işbirliği için ideal çözüm.</p>
+        <div class="mt-4 social-links">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5 class="text-uppercase fw-bold mb-4">Bağlantılar</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white">Ana Sayfa</a></li>
+          <li class="mb-2"><a href="listings.html" class="text-white">İlanlar</a></li>
+          <li class="mb-2"><a href="my-listings.html" class="text-white">İlanlarım</a></li>
+          <li><a href="register.html" class="text-white">Kayıt Ol</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4">
+        <h5 class="text-uppercase fw-bold mb-4">Yardım</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="text-white">SSS</a></li>
+          <li class="mb-2"><a href="#" class="text-white">Gizlilik Politikası</a></li>
+          <li class="mb-2"><a href="#" class="text-white">Kullanım Koşulları</a></li>
+          <li><a href="#" class="text-white">Çerez Politikası</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="text-uppercase fw-bold mb-4">Bültenimize Abone Olun</h5>
+        <p>Yeniliklerden ve kampanyalardan haberdar olmak için e-posta listemize kaydolun.</p>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="E-posta adresiniz">
+          <button class="btn btn-primary" type="button">Abone Ol</button>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4">
+    <div class="row align-items-center">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="mb-0">© 2024 TourConnect. Tüm hakları saklıdır.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <img src="https://via.placeholder.com/200x40?text=Ödeme+Yöntemleri" alt="Ödeme Yöntemleri" class="img-fluid" width="200">
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<a href="#" class="btn btn-primary back-to-top shadow position-fixed" id="backToTop" style="bottom: 30px; right: 30px; z-index: 999;">
+  <i class="fas fa-arrow-up"></i>
+</a>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS (isteğe bağlı) -->
+<script src="js/main.js"></script>
+<script>
+// İlan verileri (statik örnek)
+const listings = [
+  {
+    type: 'rehber',
+    html: `<div class="col-md-4 mb-4 listing-item rehber">
+      <div class="card guide-card h-100 border-0 shadow-sm">
+        <div class="card-img-top position-relative">
+          <img src="https://via.placeholder.com/300x300?text=Rehber+1" class="card-img-top" alt="Rehber Ahmet Yılmaz">
+          <div class="badge-overlay position-absolute top-0 end-0 m-2">
+            <span class="badge bg-success">Çevrimiçi</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title mb-1">Ahmet Yılmaz</h5>
+          <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>İstanbul</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-light text-dark"><i class="fas fa-landmark me-1"></i>Tarih</span>
+            <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>İngilizce</span>
+          </div>
+          <p class="card-text">15 yıllık deneyime sahip profesyonel tur rehberi. Bizans ve Osmanlı tarihi uzmanı.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  },
+  {
+    type: 'rehber',
+    html: `<div class="col-md-4 mb-4 listing-item rehber">
+      <div class="card guide-card h-100 border-0 shadow-sm">
+        <div class="card-img-top position-relative">
+          <img src="https://via.placeholder.com/300x300?text=Rehber+2" class="card-img-top" alt="Rehber Ayşe Demir">
+          <div class="badge-overlay position-absolute top-0 end-0 m-2">
+            <span class="badge bg-secondary">Çevrimdışı</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title mb-1">Ayşe Demir</h5>
+          <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Kapadokya</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-light text-dark"><i class="fas fa-mountain me-1"></i>Doğa</span>
+            <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>Fransızca</span>
+          </div>
+          <p class="card-text">Kapadokya'nın vadileri ve peri bacaları hakkında uzman yerel rehber.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  },
+  {
+    type: 'rehber',
+    html: `<div class="col-md-4 mb-4 listing-item rehber">
+      <div class="card guide-card h-100 border-0 shadow-sm">
+        <div class="card-img-top position-relative">
+          <img src="https://via.placeholder.com/300x300?text=Rehber+3" class="card-img-top" alt="Rehber Mehmet Kaya">
+          <div class="badge-overlay position-absolute top-0 end-0 m-2">
+            <span class="badge bg-success">Çevrimiçi</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title mb-1">Mehmet Kaya</h5>
+          <p class="text-muted small mb-2"><i class="fas fa-map-marker-alt me-1"></i>Antalya</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
+            <span class="badge bg-light text-dark"><i class="fas fa-umbrella-beach me-1"></i>Plaj</span>
+            <span class="badge bg-light text-dark"><i class="fas fa-language me-1"></i>Almanca</span>
+          </div>
+          <p class="card-text">Antalya ve çevresinde 10+ yıl deneyimli, plaj ve doğa turları uzmanı rehber.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Profili Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  },
+  {
+    type: 'acenta',
+    html: `<div class="col-md-4 mb-4 listing-item acenta">
+      <div class="card agency-card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="agency-logo mb-4 mx-auto">
+            <img src="https://via.placeholder.com/120x120?text=Acenta+1" alt="Turkey Tour Experts" class="img-fluid">
+          </div>
+          <h5 class="card-title">Turkey Tour Experts</h5>
+          <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>İstanbul, Ankara, İzmir</p>
+          <div class="rating mb-3">
+            <span class="text-warning"><i class="fas fa-star"></i></span>
+            <span class="ms-1">4.7 (342)</span>
+          </div>
+          <p class="card-text">Türkiye'nin her bölgesine özel turlar düzenleyen, 15 yıllık deneyime sahip acenta.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  },
+  {
+    type: 'acenta',
+    html: `<div class="col-md-4 mb-4 listing-item acenta">
+      <div class="card agency-card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="agency-logo mb-4 mx-auto">
+            <img src="https://via.placeholder.com/120x120?text=Acenta+2" alt="Cappadocia Dream Tours" class="img-fluid">
+          </div>
+          <h5 class="card-title">Cappadocia Dream Tours</h5>
+          <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>Nevşehir, Kayseri</p>
+          <div class="rating mb-3">
+            <span class="text-warning"><i class="fas fa-star"></i></span>
+            <span class="ms-1">4.9 (210)</span>
+          </div>
+          <p class="card-text">Kapadokya ve çevresinde balon turları ve doğa gezileriyle ünlü acenta.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  },
+  {
+    type: 'acenta',
+    html: `<div class="col-md-4 mb-4 listing-item acenta">
+      <div class="card agency-card h-100 border-0 shadow-sm">
+        <div class="card-body text-center p-4">
+          <div class="agency-logo mb-4 mx-auto">
+            <img src="https://via.placeholder.com/120x120?text=Acenta+3" alt="Ege Tatil Turları" class="img-fluid">
+          </div>
+          <h5 class="card-title">Ege Tatil Turları</h5>
+          <p class="text-muted small mb-3"><i class="fas fa-map-marker-alt me-1"></i>İzmir, Bodrum, Kuşadası</p>
+          <div class="rating mb-3">
+            <span class="text-warning"><i class="fas fa-star"></i></span>
+            <span class="ms-1">4.8 (185)</span>
+          </div>
+          <p class="card-text">Ege bölgesinde yaz tatili ve kültür turları sunan deneyimli acenta.</p>
+        </div>
+        <div class="card-footer bg-white border-0">
+          <a href="#" class="btn btn-outline-primary w-100">Detayları Görüntüle</a>
+        </div>
+      </div>
+    </div>`
+  }
+];
+
+function renderListings(type) {
+  const container = document.getElementById('listings-container');
+  let html = '';
+  listings.forEach(item => {
+    if (type === 'all' || item.type === type) {
+      html += item.html;
+    }
+  });
+  container.innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const typeFilter = document.getElementById('type-filter');
+  renderListings('all');
+  typeFilter.addEventListener('change', function() {
+    renderListings(this.value);
+  });
+});
+</script>
+</body>
+</html>

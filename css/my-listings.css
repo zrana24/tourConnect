@@ -1,0 +1,50 @@
+/* my-listings.html'e özel responsive ve küçük boyutlu stiller */
+.guide-card, .agency-card {
+  border-radius: var(--main-radius);
+  box-shadow: var(--main-shadow);
+  background: #fff;
+  transition: box-shadow 0.2s, transform 0.2s;
+  min-height: 120px;
+  padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+  font-size: 0.95em;
+}
+.guide-card:hover, .agency-card:hover {
+  box-shadow: var(--main-shadow-hover);
+  transform: translateY(-2px) scale(1.01);
+}
+.card-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+.card-text {
+  font-size: 0.9rem;
+}
+.btn {
+  font-size: 0.88rem;
+  border-radius: 1.1rem;
+  padding: 0.22rem 0.7rem;
+}
+.card-header {
+  font-size: 0.95rem;
+  padding: 0.4rem 0.8rem;
+}
+.card-body {
+  font-size: 0.93rem;
+}
+.pagination .page-link {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.6rem;
+}
+@media (max-width: 900px) {
+  .card-title {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 700px) {
+  .card-title {
+    font-size: 0.8rem;
+  }
+  .card-header {
+    font-size: 0.85rem;
+  }
+} 
