@@ -375,11 +375,12 @@ body.show-backtotop #backToTop {
     max-width: 220px;
     max-height: 220px;
   }
-  .rounded-animation dotlottie-wc {
-    transform: scale(1);
+  .hero-section {
+    padding-top: 4.5rem !important;
   }
   .hero-section h1 {
     font-size: 1.5rem !important;
+    margin-top: 0.5rem !important;
   }
   .hero-section p.lead {
     font-size: 1rem !important;
